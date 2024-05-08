@@ -1,0 +1,28 @@
+Anexo II
+GDD – Game Design Document (Modelo)
+
+1 Nome do Projeto
+
+2 High Concept
+Descreva em apenas um parágrafo as principais características do jogo, incluindo os aspectos diferenciais e inovadores do projeto. (Máximo de 1000 caracteres)
+
+3 Gameplay e Enredo
+Descreva todos os elementos de jogo e sua interação com o jogador. Fases, personagens, enredo, storyboards e cenário, são todos elementos desta seção. Se necessário utilize imagens, tabelas e fluxogramas.
+
+4 Fluxo do jogo
+Apresente um diagrama que informe as situações de alteração de estados do jogo. São incluídos nessa seção a navegação pelos menus, diferentes situações de jogo, telas de encerramento, pontuação ou configuração.
+
+5 Level Design
+Detalhe o desenho do mapa completo das fases, incluindo plataformas, posicionamento de personagens, objetos e recursos. Os mapas devem ser apresentados em formato de imagens.
+
+6 Interface de usuário
+Mostre a estrutura pretendida para a organização dos elementos visuais da interface do jogo, informando a maneira como serão dispostos para o usuário. Apresente a relação de dimensionamento e organização pretendida para os personagens, cenários e displays. Inclua imagens das estruturas da interface (wireframes) e exemplos de interfaces gráficas com imagens das telas do jogo.
+
+7 Áudio e música
+Descreva as características de áudio e música do jogo.
+
+8 Concept Art e referências visuais
+Nesta seção, inclua as ilustrações que guiarão o desenvolvimento do jogo (concept art) ou referências de outros jogos, que ilustram algum aspecto específico ou amplo deste jogo.
+
+9 Ideias adicionais e observações
+Inclua aqui funcionalidades extras que podem ou não ser incluídas no jogo, ou outras observações quanto ao projeto.
