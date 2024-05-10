@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
-@export var default_speed = 100
-@export var speed = 100
+@export var default_speed = 200
+@export var speed = 200
+
+func _ready():
+	speed = default_speed
 
 func _physics_process(_delta: float) -> void:
 	

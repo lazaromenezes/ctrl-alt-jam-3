@@ -15,6 +15,14 @@ run/main_scene="res://scenes/test_room/test_room.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://scenes/icon.svg"
 
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/window_width_override=640
+window/size/window_height_override=480
+window/stretch/mode="viewport"
+
 [input]
 
 move_forward={
