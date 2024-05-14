@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://hc3pxtjhdxxe"]
+
+[ext_resource type="Texture2D" uid="uid://bps8s6fr73yx" path="res://assets/green_effects.png" id="1_co4k4"]
+[ext_resource type="Script" path="res://scenes/green_shot.gd" id="1_h6jxv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j2lm"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou4j0"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b4p2"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj3ld"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gosas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j2lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou4j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b4p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj3ld")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgbhp"]
+radius = 4.0
+
+[node name="GreenShot" type="Area2D"]
+script = ExtResource("1_h6jxv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gosas")
+animation = &"fire"
+autoplay = "fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_rgbhp")
