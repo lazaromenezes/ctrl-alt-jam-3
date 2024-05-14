@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://hc3pxtjhdxxe"]
+[gd_scene load_steps=11 format=3 uid="uid://hc3pxtjhdxxe"]
 
 [ext_resource type="Texture2D" uid="uid://bps8s6fr73yx" path="res://assets/green_effects.png" id="1_co4k4"]
 [ext_resource type="Script" path="res://scenes/green_shot.gd" id="1_h6jxv"]
@@ -39,6 +39,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_dka45"]
+offsets = PackedFloat32Array(0, 0.719198, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.704871, 0.704871, 0.704871, 0.704871, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l47q5"]
+gradient = SubResource("Gradient_dka45")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.521368, 0.905983)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgbhp"]
 radius = 4.0
 
@@ -50,6 +61,12 @@ sprite_frames = SubResource("SpriteFrames_gosas")
 animation = &"fire"
 autoplay = "fire"
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 4)
+color = Color(0.415686, 0.784314, 0.423529, 1)
+texture = SubResource("GradientTexture2D_l47q5")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_rgbhp")
