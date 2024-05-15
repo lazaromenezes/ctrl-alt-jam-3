@@ -1,7 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://hc3pxtjhdxxe"]
+[gd_scene load_steps=17 format=3 uid="uid://hc3pxtjhdxxe"]
 
 [ext_resource type="Texture2D" uid="uid://bps8s6fr73yx" path="res://assets/green_effects.png" id="1_co4k4"]
 [ext_resource type="Script" path="res://scenes/green_shot.gd" id="1_h6jxv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yodyl"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(512, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h48r6"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(528, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6wnk"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(544, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7chj"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(560, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6j2lm"]
 atlas = ExtResource("1_co4k4")
@@ -23,6 +39,23 @@ region = Rect2(272, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yodyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h48r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6wnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7chj")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6j2lm")
 }, {
 "duration": 1.0,
@@ -39,34 +72,52 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_dka45"]
-offsets = PackedFloat32Array(0, 0.719198, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.704871, 0.704871, 0.704871, 0.704871, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l47q5"]
-gradient = SubResource("Gradient_dka45")
-width = 8
-height = 8
-fill = 1
-fill_from = Vector2(0.521368, 0.905983)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgbhp"]
 radius = 4.0
+
+[sub_resource type="Curve" id="Curve_gcqxx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.547131, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1vo18"]
+curve = SubResource("Curve_gcqxx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2b32"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+initial_velocity_min = 3.91
+initial_velocity_max = 160.16
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_1vo18")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htlse"]
+atlas = ExtResource("1_co4k4")
+region = Rect2(502, 103, 3, 3)
 
 [node name="GreenShot" type="Area2D"]
 script = ExtResource("1_h6jxv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gosas")
-animation = &"fire"
+animation = &"explode"
 autoplay = "fire"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 4)
-color = Color(0.415686, 0.784314, 0.423529, 1)
-texture = SubResource("GradientTexture2D_l47q5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_rgbhp")
+
+[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_u2b32")
+texture = SubResource("AtlasTexture_htlse")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
